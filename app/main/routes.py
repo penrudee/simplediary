@@ -1,6 +1,7 @@
 
 
 
+from app.auth.routes import login
 from app.main import main_bp
 from flask import redirect, render_template, request, url_for
 from flask_login import current_user, login_required
@@ -55,6 +56,7 @@ def allpost():
                             title="Allpost",
                             posts=posts)
 @main_bp.route('/del_post/<int:id>',methods=['POST'])
+@login_required
 def del_post(id):
     p = Post.query.get(id)
     db.session.delete(p)

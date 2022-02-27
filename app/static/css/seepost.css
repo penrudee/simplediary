@@ -10,12 +10,21 @@ body {
     margin: 0 0 var(--spacing);
     font-size: var(--font-size);
     line-height: var(--line-height);
+    font-family: 'Bai Jamjuree', sans-serif;
+    
   }
   
   .body {
     --font-size: 2rem;
+    font-family: 'Bai Jamjuree', sans-serif;
+
   }
   
   .h1 {
     --font-size: 4rem;
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: bold;
+  }
+  p{
+    font-weight: 600;
   }

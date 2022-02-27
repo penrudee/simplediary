@@ -126,3 +126,12 @@ background: linear-gradient(to bottom, #ef473a, #cb2d3e);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+h4{
+  font-size:1.5rem;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: bold;
+}
+p{
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: 600;
+}

@@ -28,7 +28,9 @@ def login():
 @auth_bp.route('/signup',methods=['POST','GET'])
 def signup():
     form = RegisterForm()
-    
+    if current_user.is_authenticated:
+
+        return redirect(url_for('main_bp.index'))
     if request.method == 'POST':
         username = form.username.data 
         email = form.email.data 

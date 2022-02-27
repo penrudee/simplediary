@@ -1,7 +1,9 @@
 {% extends "layouts/base.html" %}
   {% block link %}
     <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200&display=swap" rel="stylesheet">
   {% endblock %}
 {% block title %} 
   <title>
@@ -48,7 +50,7 @@
           {% if page_num %}
           <!-- Check for the active page and set the link to "Active"-->
               {% if pge.page == page_num %}
-                  <a href="{{ url_for('main_bp.index', page=page_num) }}" class="btn btn-dark">
+                  <a href="{{ url_for('main_bp.index', page=page_num) }}" class="btn btn-primary">
                       {{ page_num }}
                   </a>
                   {% else %}

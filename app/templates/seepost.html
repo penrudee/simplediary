@@ -1,6 +1,9 @@
 {% extends "layouts/base.html" %}
     {% block link %}
     <link rel="stylesheet" href="{{ url_for('static',filename='css/seepost.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200&display=swap" rel="stylesheet">
     {% endblock %}
 {% block title %} 
   <title>
@@ -14,7 +17,7 @@
  {% if post %}   
     <p class="text h1">{{post.head}}</p>
     <p class="text">{{post.timestamp.strftime("%d-%M-%Y")}}</p>
-    <p class="text body">{{post.body}} </p>
+    <p class="text body">{{post.body|safe}} </p>
   
  {% endif %}
 </div>
