@@ -1,0 +1,45 @@
+{% extends "layouts/base.html" %}
+    {% block link %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/post.css')}}">
+    
+    <script src="{{ url_for('static',filename='js/texteditor.js') }}"></script>
+
+    {% endblock %}
+{% block title %} 
+  <title>
+     {{title}} -PharmBook
+  </title>
+{% endblock %} 
+  
+{% block content %}
+
+<div class="container">  
+    <form action="{{url_for('main_bp.post_post') }}" id="contact" action="" method="post">
+      <h3>New Diary</h3>
+      <h4>Contact us for custom quote</h4>
+      <fieldset>
+        {{ form.head(class="form-control")}}
+      </fieldset>
+      
+      <fieldset>
+        {{form.img_url(class="form-control")}}
+      </fieldset>
+      
+      <fieldset>
+        {{form.body(class="form-control")}}
+      </fieldset>
+      <fieldset>
+        {{form.tag(class="form-control")}}
+      </fieldset>
+      <fieldset>
+        {{form.submit(class="btn btn-primary")}}
+      </fieldset>
+      <p class="copyright">Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a></p>
+    </form>
+  </div>
+
+
+{% endblock  %}
+
+
+

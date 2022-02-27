@@ -1,0 +1,21 @@
+body {
+    padding: 5vw;
+  }
+  
+  .text {
+    --font-size: 1rem;
+    --line-height: calc(var(--font-size) * var(--ratio));
+    --spacing: calc(var(--line-height) / 2);
+    --ratio: 1.5;
+    margin: 0 0 var(--spacing);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+  }
+  
+  .body {
+    --font-size: 2rem;
+  }
+  
+  .h1 {
+    --font-size: 4rem;
+  }

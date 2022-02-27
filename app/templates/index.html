@@ -1,0 +1,81 @@
+{% extends "layouts/base.html" %}
+  {% block link %}
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+
+  {% endblock %}
+{% block title %} 
+  <title>
+     {{title}} -All Diary
+  </title>
+{% endblock %} 
+  
+{% block content %}
+
+<div class="container">
+    
+  {% if posts  %}
+    {% for post in posts %}
+    <div class="card">
+      <div class="card__header">
+        <img src="{{ post.img_url }}" alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">{{post.tag}}</span>
+        <h4><a href="{{url_for('main_bp.seepost',id=post.id) }}">{{post.head}}</a></h4>
+        <p>{{post.body|truncate(120,true,'') }}</p>
+      </div>
+      <div class="card__footer">
+        <div class="user">
+          <div class="circular">
+            <img src="{{url_for('static',filename='user_image/user1.jpg')}}" alt="user__image" class="user__image">
+          </div>
+          <div class="user__info">
+            <h5>PharmBook</h5>
+            <small>{{post.timestamp.strftime("%d-%M-%Y")}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page Links-->
+    <div class="text-right">
+                    
+      <a href="{{ url_for('main_bp.index', page=pge.prev_num) }}" class="btn btn-outline-dark 
+           {% if pge.page == 1 %} disabled {% endif %}">
+          &laquo;
+      </a>
+      <!-- Loop through the number of pages to display a link for each-->
+      {% for page_num in pge.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+          {% if page_num %}
+          <!-- Check for the active page and set the link to "Active"-->
+              {% if pge.page == page_num %}
+                  <a href="{{ url_for('main_bp.index', page=page_num) }}" class="btn btn-dark">
+                      {{ page_num }}
+                  </a>
+                  {% else %}
+                  <a href="{{ url_for('main_bp.index', page=page_num) }}" class="btn btn-outline-dark">
+                      {{ page_num }}
+                  </a>
+              {% endif %}
+          {% else %}
+          ...
+          {% endif %}
+      {% endfor %}
+      <a href="{{ url_for('main_bp.index', page=pge.next_num) }}" class="btn btn-outline-dark 
+           {% if pge.page == pge.pages %} disabled {% endif %}">
+          &raquo;
+      </a>
+      
+  </div>
+  <p class="text-right mt-3">
+      Showing page {{ pge.page }} of {{ pge.pages }}
+  </p>
+</div>
+    {% endfor %}
+  
+  {% endif %}
+
+
+</div>
+
+{% endblock  %}
+

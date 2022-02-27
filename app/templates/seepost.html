@@ -1,0 +1,25 @@
+{% extends "layouts/base.html" %}
+    {% block link %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/seepost.css')}}">
+    {% endblock %}
+{% block title %} 
+  <title>
+     {{title}} -PharmBook
+  </title>
+{% endblock %} 
+  
+{% block content %}
+
+<div class="container">  
+ {% if post %}   
+    <p class="text h1">{{post.head}}</p>
+    <p class="text">{{post.timestamp.strftime("%d-%M-%Y")}}</p>
+    <p class="text body">{{post.body}} </p>
+  
+ {% endif %}
+</div>
+
+{% endblock  %}
+
+
+
