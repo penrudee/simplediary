@@ -5,7 +5,8 @@ from flask import Flask, request, current_app
 from flask_sqlalchemy import SQLAlchemy 
 from flask_migrate import Migrate 
 from flask_login import LoginManager
-from config import Config 
+from config import Config
+from momentjs import momentjs 
 
 db = SQLAlchemy()
 migrate = Migrate() 
@@ -14,7 +15,7 @@ migrate = Migrate()
 def create_app(config_class=Config):
     app_pos = Flask(__name__)
     app_pos.config.from_object(config_class)
-
+    app_pos.jinja_env.globals['momentjs'] = momentjs
     db.init_app(app_pos)
     migrate.init_app(app_pos,db)
     login_manager = LoginManager()

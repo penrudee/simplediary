@@ -69,6 +69,7 @@ background: linear-gradient(to right, #FFFFFF, #ECE9E6);
   background: #56CCF2;
 background: linear-gradient(to bottom, #2F80ED, #56CCF2);
   color: #fafafa;
+  text-decoration: none;
 }
 
 .tag-brown {
@@ -135,3 +136,4 @@ p{
   font-family: 'Bai Jamjuree', sans-serif;
   font-weight: 600;
 }
+

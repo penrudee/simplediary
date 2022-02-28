@@ -14,7 +14,7 @@ import datetime
 import markdown
 @main_bp.route("/")
 @main_bp.route("/index")
-@login_required
+
 def index():
     page = request.args.get('page',1,type=int)
     posts = Post.query.order_by(Post.id.desc()).paginate(

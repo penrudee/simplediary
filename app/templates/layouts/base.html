@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    
+    <script src="{{ url_for('static',filename='js/moments.js') }}"></script>
+    
     {% block link %}
 
     {% endblock %}
@@ -21,7 +24,7 @@
         <!--  NAV MENU  -->
         <nav class="nav-bar">
           <div class="container">
-            <div class="header-logo-block"><a href=""><img class="header-logo" src="{{url_for('static',filename='logo.png')}}" alt="header-logo"></a></div>
+            <div class="header-logo-block"><a href="{{ url_for('main_bp.index')}}"><img class="header-logo" src="{{url_for('static',filename='logo.png')}}" alt="header-logo"></a></div>
             <ul class="nav-ul">
               <li class="hoverable bimini">
                 <a href="{{url_for('main_bp.index')}}" class="pacifico">Home</a>
@@ -131,7 +134,7 @@
             </ul>
           </div>
         </nav>
-        <div id="rl_pf">
+        <div id="">
           {% block content %} {% endblock %}
         </div>
     </div>

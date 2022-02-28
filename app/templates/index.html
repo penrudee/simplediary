@@ -33,7 +33,7 @@
           </div>
           <div class="user__info">
             <h5>PharmBook</h5>
-            <small>{{post.timestamp.strftime("%d-%M-%Y")}}</small>
+            <small>{{momentjs(post.timestamp).format('LLLL')}}</small>
           </div>
         </div>
       </div>

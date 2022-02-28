@@ -1,30 +1,219 @@
-body {
-    padding: 5vw;
-  }
-  
-  .text {
-    --font-size: 1rem;
-    --line-height: calc(var(--font-size) * var(--ratio));
-    --spacing: calc(var(--line-height) / 2);
-    --ratio: 1.5;
-    margin: 0 0 var(--spacing);
-    font-size: var(--font-size);
-    line-height: var(--line-height);
-    font-family: 'Bai Jamjuree', sans-serif;
-    
-  }
-  
-  .body {
-    --font-size: 2rem;
-    font-family: 'Bai Jamjuree', sans-serif;
+@font-face {
+  font-family: 'Hind';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/hind/v15/5aU69_a8oxmIdGl4AQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Hind';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/hind/v15/5aU19_a8oxmIfNJdERySiA.ttf) format('truetype');
+}
+/* html {
+  margin: 0;
+  padding: 2%;
+} */
+/* body {
+  margin: 0;
+  font: normal 16px/150% Hind, sans-serif;
+  color: #222;
+  line-height: 1.4;
+} */
 
-  }
-  
-  .h1 {
-    --font-size: 4rem;
-    font-family: 'Bai Jamjuree', sans-serif;
-    font-weight: bold;
-  }
-  p{
-    font-weight: 600;
-  }
+/* * {
+  box-sizing: border-box;
+} */
+a:link {
+  text-decoration: underline;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+h1 {
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: 300;
+  margin: 1.5em 0 0.25em;
+  color: black;
+  color: black;
+  font-weight: 700;
+  font-size: 2.5em;
+  margin: 1em 0 0.125em;
+}
+h1 + p {
+  margin-top: 1.75em;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+h2 {
+  font-family: Hind, sans-serif;
+  font-weight: 300;
+  margin: 1.5em 0 0.25em;
+  color: black;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+h3 {
+  font-family: Hind, sans-serif;
+  font-weight: 300;
+  margin: 1.5em 0 0.25em;
+  color: black;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+h4 {
+  font-family: Hind, sans-serif;
+  font-weight: 300;
+  margin: 1.5em 0 0.25em;
+  color: black;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+h5 {
+  font-family: Hind, sans-serif;
+  font-weight: 300;
+  margin: 1.5em 0 0.25em;
+  color: black;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+h6 {
+  font-family: Hind, sans-serif;
+  font-weight: 300;
+  margin: 1.5em 0 0.25em;
+  color: black;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* .container {
+  max-width: 700px;
+  margin: 0 auto;
+} */
+article.main {
+  margin: 1em 0;
+}
+.post-meta {
+  display: flex;
+  font: 14px/125% Hind, sans-serif;
+  margin-bottom: 20px;
+}
+.post-info > p {
+  margin: 5px 0;
+}
+.card__footer {
+  display: flex;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+
+.div-avatar {
+  border-radius: 50%
+}
+
+#a-avartar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px !important;
+  width: 64px !important ;
+  /* border: 2px solid green; */
+}
+
+.user__img {
+  align-self: auto;
+  /* border: 2px solid blue; */
+  border-radius: 50%;
+  padding:5%;
+  height: 64px !important;
+  width: 64px !important ;
+}
+
+.author-name {
+  font-weight: 700;
+  color: #00ab6b;
+  text-decoration: none;
+}
+.author-name:link {
+  font-weight: 700;
+  color: #00ab6b;
+  text-decoration: none;
+}
+.author-name:visited {
+  font-weight: 700;
+  color: #00ab6b;
+  text-decoration: none;
+}
+.author-name:hover {
+  color: #1c9963;
+}
+.author-name:active {
+  color: #1c9963;
+}
+p {
+  margin: 0 0 0.75em;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: 500;
+}
+ul > li {
+  margin: 0 0 0.75em;
+}
+ol > li {
+  margin: 0 0 0.75em;
+}
+blockquote {
+  margin-left: -1em;
+  margin-right: -1em;
+  border-left: 4px solid #ababab;
+  padding: 0.25em 0.75em;
+  font-size: 150%;
+}
+blockquote > cite {
+  display: block;
+  margin-top: 1.5em;
+  font-variant: italics;
+  font-size: 16px;
+  color: #ababab;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+pre {
+  display: block;
+  padding: 0.5em;
+  background-color: #ebebeb;
+}
+.image-p > img {
+  display: block;
+  max-width: 100%;
+}
+.image-p > .caption {
+  display: block;
+  width: 100%;
+  font-size: 80%;
+  border-bottom: 1px solid #ababab;
+  color: black;
+}
+article a {
+  color: #000;
+}
+article a:link {
+  color: #000;
+}
+article a:visited {
+  color: #444;
+}
+article a:hover {
+  color: #a0a0a0;
+}
+article a:active {
+  color: #a0a0a0;
+}
+.margin-up-top{
+  margin: 0.9em 0 0 0;
+}
