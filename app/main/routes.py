@@ -1,6 +1,7 @@
 
 
 
+import imp
 from app.auth.routes import login
 from app.main import main_bp
 from flask import redirect, render_template, request, url_for
@@ -8,15 +9,16 @@ from flask_login import current_user, login_required
 from app.models import Post
 from app.forms import PostForm
 from app import db 
-import datetime 
 
+import datetime 
+import markdown
 @main_bp.route("/")
 @main_bp.route("/index")
 @login_required
 def index():
     page = request.args.get('page',1,type=int)
     posts = Post.query.order_by(Post.id.desc()).paginate(
-    page=page,per_page= 3
+    page=page,per_page= 2
   )
   
     return render_template('index.html',
@@ -39,7 +41,7 @@ def post_post():
     if request.method == "POST":
         nw_post=Post()
         nw_post.head = form.head.data 
-        nw_post.body = form.body.data
+        nw_post.body = markdown.markdown(form.body.data)
         nw_post.img_url = form.img_url.data 
         nw_post.tag = form.tag.data 
         nw_post.user_id = current_user.id 
@@ -68,3 +70,11 @@ def del_post(id):
 def seepost(id):
     post = Post.query.filter_by(id=id).first()
     return render_template("seepost.html",title="My Diary",post=post)
+
+@main_bp.route('/tagpost/<string:tag>')
+def tagpost(tag):
+    page = request.args.get('page',1,type=int)
+    posts = Post.query.filter_by(tag=tag).paginate(
+    page=page,per_page= 2
+  )
+    return render_template('index.html',title="Tag",posts=posts.items,pge=posts)

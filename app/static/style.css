@@ -8,23 +8,23 @@
   margin: 0;
 }
 
-/* body {
+body {
   font-family: "Quicksand", sans-serif;
   display: grid;
   place-items: center;
   height: 100vh;
-  background: #7f7fd5;
-  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
-} */
+  /* background: #7f7fd5; */
+  /* background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5); */
+}
 
-/* .container {
+.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 1200px;
   margin-block: 2rem;
   gap: 2rem;
-} */
+}
 
 img {
   max-width: 100%;
