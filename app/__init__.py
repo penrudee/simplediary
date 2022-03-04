@@ -1,4 +1,7 @@
 import os
+import logging
+
+
 from re import A 
 
 from flask import Flask, request, current_app 
@@ -53,25 +56,25 @@ def create_app(config_class=Config):
                 fromaddr='no-reply@' + app_pos.config['MAIL_SERVER'],
                 toaddrs=app_pos.config['ADMINS'], subject='Pharmbookdiary Failure',
                 credentials=auth, secure=secure)
-            mail_handler.setLevel(login_manager.ERROR)
+            mail_handler.setLevel(logging.ERROR)
             app_pos.logger.addHandler(mail_handler)
 
         if app_pos.config['LOG_TO_STDOUT']:
-            stream_handler = login_manager.StreamHandler()
-            stream_handler.setLevel(login_manager.INFO)
+            stream_handler = logging.StreamHandler()
+            stream_handler.setLevel(logging.INFO)
             app_pos.logger.addHandler(stream_handler)
         else:
             if not os.path.exists('logs'):
                 os.mkdir('logs')
             file_handler = RotatingFileHandler('logs/pharmbookdiary.log',
                                             maxBytes=10240, backupCount=10)
-            file_handler.setFormatter(login_manager.Formatter(
+            file_handler.setFormatter(logging.Formatter(
                 '%(asctime)s %(levelname)s: %(message)s '
                 '[in %(pathname)s:%(lineno)d]'))
-            file_handler.setLevel(login_manager.INFO)
+            file_handler.setLevel(logging.INFO)
             app_pos.logger.addHandler(file_handler)
 
-        app_pos.logger.setLevel(login_manager.INFO)
+        app_pos.logger.setLevel(logging.INFO)
         app_pos.logger.info('PharmbookDiary startup')
      
     return app_pos
