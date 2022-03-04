@@ -1,7 +1,7 @@
 
 
 
-import imp
+
 from app.auth.routes import login
 from app.main import main_bp
 from flask import redirect, render_template, request, url_for
@@ -60,10 +60,37 @@ def allpost():
 @main_bp.route('/del_post/<int:id>',methods=['POST'])
 @login_required
 def del_post(id):
+    
     p = Post.query.get(id)
     db.session.delete(p)
     db.session.commit()
-    return redirect(url_for('allpost'))
+    return redirect(url_for('main_bp.allpost'))
+
+@main_bp.route('/edit/<int:id>')
+def edit(id):
+    form = PostForm()
+    
+    po = Post.query.get(id)
+    form.head.data = po.head 
+    form.body.data = po.body
+    form.tag.data = po.tag
+    form.img_url.data = po.img_url
+    return render_template('edit.html',form=form,post=po)
+
+@main_bp.route('/edit_post/<int:id>',methods=['POST'])
+def edit_post(id):
+    form = PostForm()
+    po = Post.query.get(id)
+    if request.method == 'POST':
+        
+        po.head = form.head.data 
+        po.body = form.body.data 
+        po.tag = form.tag.data 
+        po.img_url = form.img_url.data 
+        po.timestamp = datetime.datetime.now()
+        db.session.add(po)
+        db.session.commit()
+    return redirect(url_for('main_bp.seepost',id=id))
 
 
 @main_bp.route('/seepost/<int:id>')

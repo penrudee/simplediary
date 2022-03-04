@@ -21,6 +21,7 @@
                 <td scope="col">#</td>
                 <td scope="col">หัวข้อ</td>
                 <td scope="col">Delete</td>
+                <td scope="col">Edit</td>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +34,14 @@
                         
                         <button type="submit" class="btn btn-danger">DEL</button>
                     </form>
+                </td>
+                <td>
+                  <a href="{{ url_for('main_bp.edit',id=post.id)}}" class="btn btn-primary">
+                    Edit
+                  </a>
+                        
+                    
+                
                 </td>
             </tr>
             {% endfor %}
