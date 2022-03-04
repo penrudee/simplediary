@@ -7,6 +7,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from config import Config
 from momentjs import momentjs 
+from logging.handlers import SMTPHandler, RotatingFileHandler
 
 db = SQLAlchemy()
 migrate = Migrate() 
@@ -38,7 +39,41 @@ def create_app(config_class=Config):
     app_pos.register_blueprint(auth_bp)
     app_pos.register_blueprint(main_bp)
    
-    
+    if not app_pos.debug and not app_pos.testing:
+        if app_pos.config['MAIL_SERVER']:
+            auth = None
+            if app_pos.config['MAIL_USERNAME'] or app_pos.config['MAIL_PASSWORD']:
+                auth = (app_pos.config['MAIL_USERNAME'],
+                    app_pos.config['MAIL_PASSWORD'])
+            secure = None
+            if app_pos.config['MAIL_USE_TLS']:
+                secure = ()
+            mail_handler = SMTPHandler(
+                mailhost=(app_pos.config['MAIL_SERVER'], app_pos.config['MAIL_PORT']),
+                fromaddr='no-reply@' + app_pos.config['MAIL_SERVER'],
+                toaddrs=app_pos.config['ADMINS'], subject='Pharmbookdiary Failure',
+                credentials=auth, secure=secure)
+            mail_handler.setLevel(login_manager.ERROR)
+            app_pos.logger.addHandler(mail_handler)
+
+        if app_pos.config['LOG_TO_STDOUT']:
+            stream_handler = login_manager.StreamHandler()
+            stream_handler.setLevel(login_manager.INFO)
+            app_pos.logger.addHandler(stream_handler)
+        else:
+            if not os.path.exists('logs'):
+                os.mkdir('logs')
+            file_handler = RotatingFileHandler('logs/pharmbookdiary.log',
+                                            maxBytes=10240, backupCount=10)
+            file_handler.setFormatter(login_manager.Formatter(
+                '%(asctime)s %(levelname)s: %(message)s '
+                '[in %(pathname)s:%(lineno)d]'))
+            file_handler.setLevel(login_manager.INFO)
+            app_pos.logger.addHandler(file_handler)
+
+        app_pos.logger.setLevel(login_manager.INFO)
+        app_pos.logger.info('PharmbookDiary startup')
+     
     return app_pos
 
 
