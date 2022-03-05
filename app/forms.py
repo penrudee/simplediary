@@ -23,7 +23,7 @@ class RegisterForm(FlaskForm):
 
 class PostForm(FlaskForm):
    head = StringField("Head",render_kw={"placeholder": "Head",'autofocus': True,"tabindex":"1"})
-   body = TextAreaField("Body",render_kw={"placeholder": "Type your message here....",'tabindex': "3"})
+   body = TextAreaField("Body",render_kw={"placeholder": "Type your message here....",'tabindex': "3","row":5})
    tag = StringField("Tag",render_kw={"placeholder": "Tag","tabindex":"4"})
    img_url = StringField("Image Url",render_kw={"placeholder": "Image Url","tabindex":"2"})
    submit = SubmitField("Submit",render_kw={"tabindex":"5"})

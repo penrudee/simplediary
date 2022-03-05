@@ -20,6 +20,7 @@
             <tr>
                 <td scope="col">#</td>
                 <td scope="col">หัวข้อ</td>
+                <td scopre="col">Time</td>
                 <td scope="col">Delete</td>
                 <td scope="col">Edit</td>
             </tr>
@@ -29,6 +30,7 @@
             <tr>
                 <td>{{post.id}}</td>
                 <td>{{post.head}}</td>
+                <td>{{momentjs(post.timestamp).format('LLLL')}}</td>
                 <td>
                     <form action="{{url_for('main_bp.del_post',id=post.id) }}" method="post">
                         

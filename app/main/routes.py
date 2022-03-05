@@ -72,7 +72,7 @@ def edit(id):
     
     po = Post.query.get(id)
     form.head.data = po.head 
-    form.body.data = po.body
+    form.body.data = markdown.markdown(po.body)
     form.tag.data = po.tag
     form.img_url.data = po.img_url
     return render_template('edit.html',form=form,post=po)
@@ -84,10 +84,10 @@ def edit_post(id):
     if request.method == 'POST':
         
         po.head = form.head.data 
-        po.body = form.body.data 
+        po.body = markdown.markdown(form.body.data) 
         po.tag = form.tag.data 
         po.img_url = form.img_url.data 
-        po.timestamp = datetime.datetime.now()
+        
         db.session.add(po)
         db.session.commit()
     return redirect(url_for('main_bp.seepost',id=id))
