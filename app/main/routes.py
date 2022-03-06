@@ -10,6 +10,7 @@ from app.models import Post
 from app.forms import PostForm
 from app import db 
 
+
 import datetime 
 import markdown
 @main_bp.route("/")
@@ -96,7 +97,9 @@ def edit_post(id):
 @main_bp.route('/seepost/<int:id>')
 def seepost(id):
     post = Post.query.filter_by(id=id).first()
-    return render_template("seepost.html",title="My Diary",post=post)
+    seepostid = post.id
+    seepost_img_url=post.img_url
+    return render_template("seepost.html",title="My Diary",post=post,seepostid=seepostid,seepost_img_url=seepost_img_url)
 
 @main_bp.route('/tagpost/<string:tag>')
 def tagpost(tag):

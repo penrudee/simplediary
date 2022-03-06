@@ -6,6 +6,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200&display=swap" rel="stylesheet">
 
     <script src="{{ url_for('static',filename='js/seepost.js')}}"></script>
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:url" content="{{url_for('main_bp.seepost',id=seepostid)}}">
+    <meta property="og:image" content="{{seepost_img_url}}">
     {% endblock %}
 {% block title %} 
   <title>
