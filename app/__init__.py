@@ -2,7 +2,7 @@ import os
 import logging
 
 
-from re import A 
+# from re import A 
 
 from flask import Flask, request, current_app 
 from flask_sqlalchemy import SQLAlchemy 
