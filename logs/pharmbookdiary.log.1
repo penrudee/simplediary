@@ -1,0 +1,114 @@
+2022-03-04 15:51:06,655 ERROR: Exception on /index [GET] [in c:\users\bbird\diary\venv\lib\site-packages\flask\app.py:1457]
+Traceback (most recent call last):
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\bbird\diary\app\main\routes.py", line 24, in index
+    return render_template('index.html',
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "c:\users\bbird\diary\venv\lib\site-packages\jinja2\environment.py", line 1291, in render
+    self.environment.handle_exception()
+  File "c:\users\bbird\diary\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\bbird\diary\app\templates\index.html", line 1, in top-level template code
+    {% extends "layouts/base.html" %}
+  File "C:\Users\bbird\diary\app\templates\layouts\base.html", line 138, in top-level template code
+    {% block content %} {% endblock %}
+  File "C:\Users\bbird\diary\app\templates\index.html", line 26, in block 'content'
+    <!-- <span class="tag tag-blue"><a href="{{ url_for('main_bp.tagpost',tag=post.tag)}}">{{post.tag}}</a></span> -->
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
+    rv = url_adapter.build(
+  File "c:\users\bbird\diary\venv\lib\site-packages\werkzeug\routing.py", line 2315, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main_bp.tagpost'. Did you forget to specify values ['tag']?
+2022-03-04 15:51:32,693 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-04 15:56:59,835 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-04 15:58:41,735 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-04 16:13:39,731 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 05:49:25,836 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 05:49:30,651 ERROR: Exception on / [GET] [in c:\users\bbird\diary\venv\lib\site-packages\flask\app.py:1457]
+Traceback (most recent call last):
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\bbird\diary\app\main\routes.py", line 24, in index
+    return render_template('index.html',
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "c:\users\bbird\diary\venv\lib\site-packages\jinja2\environment.py", line 1291, in render
+    self.environment.handle_exception()
+  File "c:\users\bbird\diary\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\bbird\diary\app\templates\index.html", line 1, in top-level template code
+    {% extends "layouts/base.html" %}
+  File "C:\Users\bbird\diary\app\templates\layouts\base.html", line 138, in top-level template code
+    {% block content %} {% endblock %}
+  File "C:\Users\bbird\diary\app\templates\index.html", line 48, in block 'content'
+    {% include 'layout/__page.html' %}
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: layout/__page.html
+2022-03-06 05:50:15,345 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 05:52:04,034 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 06:04:02,968 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 06:05:45,306 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 06:06:12,765 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 06:06:43,900 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 06:07:39,488 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 06:10:38,707 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 06:44:06,420 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 06:54:06,402 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 06:56:09,034 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]
+2022-03-06 06:56:13,769 ERROR: Exception on /seepost/7 [GET] [in c:\users\bbird\diary\venv\lib\site-packages\flask\app.py:1457]
+Traceback (most recent call last):
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Users\bbird\diary\app\main\routes.py", line 102, in seepost
+    return render_template("seepost.html",title="My Diary",post=post,seepostid=seepostid,seepost_img_url=seepost_img_url)
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "c:\users\bbird\diary\venv\lib\site-packages\jinja2\environment.py", line 1291, in render
+    self.environment.handle_exception()
+  File "c:\users\bbird\diary\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\bbird\diary\app\templates\seepost.html", line 1, in top-level template code
+    {% extends "layouts/base.html" %}
+  File "C:\Users\bbird\diary\app\templates\layouts\base.html", line 21, in top-level template code
+    {% block link %}
+  File "C:\Users\bbird\diary\app\templates\seepost.html", line 10, in block 'link'
+    <meta property="og:url" content="{{url_for('main_bp.seepost',seepostid=seepostid)}}">
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\bbird\diary\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
+    rv = url_adapter.build(
+  File "c:\users\bbird\diary\venv\lib\site-packages\werkzeug\routing.py", line 2315, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main_bp.seepost' with values ['seepostid']. Did you forget to specify values ['id']?
+2022-03-06 06:56:43,685 INFO: PharmbookDiary startup [in C:\Users\bbird\diary\app\__init__.py:78]

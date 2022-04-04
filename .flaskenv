@@ -1,1 +1,1 @@
-FLASK_APP=wsgi.py
+FLASK_APP=pharmbookdiary.py

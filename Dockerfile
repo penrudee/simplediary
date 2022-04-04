@@ -11,7 +11,7 @@ RUN venv/bin/pip install gunicorn pymysql cryptography
 
 COPY app app
 COPY migrations migrations
-COPY wsgi.py config.py boot.sh ./
+COPY wsgi.py momentjs.py config.py boot.sh ./
 RUN chmod a+x boot.sh
 
 ENV FLASK_APP wsgi.py

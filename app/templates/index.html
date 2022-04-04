@@ -27,8 +27,8 @@
       <div class="card__body">
         
         <span class="tag tag-blue"><a href="{{ url_for('main_bp.tagpost',tag=post.tag)}}">{{post.tag}}</a></span>
-        <h4><a href="{{ url_for('main_bp.seepost',id=post.id) }}">{{post.head}}</a></h4>
-        <p>{{post.body|safe|truncate(120,False,'...') }}</p>
+        <h4><a href="{{ url_for('main_bp.seepost',id=post.id) }}">{{post.head|emojify|safe}}</a></h4>
+        <p>{{post.body|emojify|safe|truncate(120,False,'...') }}</p>
       </div>
       <div class="card__footer">
         <div class="user">

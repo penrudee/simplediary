@@ -13,6 +13,7 @@ from app import db
 
 import datetime 
 import markdown
+import emoji
 @main_bp.route("/")
 @main_bp.route("/index")
 
@@ -26,8 +27,11 @@ def index():
                             title="Home",
                             posts=posts.items,
                             pge=posts)
+@main_bp.app_template_filter('emojify')
+def emoji_filter(s):
+    return emoji.emojize(s)
 
-
+    
 @main_bp.route('/newpost')
 @login_required
 def newpost():

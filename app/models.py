@@ -21,7 +21,7 @@ class Post(db.Model):
     tag = db.Column(db.String)
     timestamp = db.Column(db.DateTime,index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    img_url = db.Column(db.String)
+    img_url = db.Column(db.String,default="https://i.imgur.com/DiQqxRx.png")
     
 class Tag(db.Model):
     id = db.Column(db.Integer,primary_key=True,index=True)
