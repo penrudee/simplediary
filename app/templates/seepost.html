@@ -32,7 +32,7 @@
        </div>
      </aside>
      <div class="margin-up-top">
-         <h1>{{post.head}}</h1>
+         <h1>{{post.head|emojify|safe}}</h1>
          <div>{{post.body|safe}}</div>
      </div>
      {% endif %}
