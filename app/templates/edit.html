@@ -18,7 +18,7 @@
       <h3>แก้ไขบันทึก</h3>
       <h4>Contact us for custom quote</h4>
       <fieldset>
-        {{ form.head(class="form-control")}}
+        {{ form.head(class="form-control")|emojify|safe}}
       </fieldset>
       
       <fieldset>
@@ -26,7 +26,7 @@
       </fieldset>
       
       <fieldset>
-        {{form.body(class="form-control")}}
+        {{form.body(class="form-control")|emojify|safe}}
       </fieldset>
       <fieldset>
         {{form.tag(class="form-control")}}
