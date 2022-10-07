@@ -119,10 +119,20 @@ def edit_post(id):
 
 @main_bp.route('/seepost/<int:id>')
 def seepost(id):
+    list_c=[]
     post = Post.query.filter_by(id=id).first()
+    _c = Comment.query.filter_by(post_id=post.id,approve=True)
+    for no_c in _c:
+        list_c.append(no_c.id)
+    length_c = len(list_c)
+    print(f"length_c = {length_c}")    
     seepostid = post.id
     seepost_img_url=post.img_url
-    return render_template("seepost.html",title="My Diary",post=post,seepostid=seepostid,seepost_img_url=seepost_img_url)
+    return render_template("seepost.html",title="My Diary",
+                            post=post,
+                            seepostid=seepostid,
+                            seepost_img_url=seepost_img_url,
+                            noti_count=length_c)
 
 @main_bp.route('/tagpost/<string:tag>')
 def tagpost(tag):

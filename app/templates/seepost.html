@@ -38,7 +38,11 @@
      {% endif %}
    </article>
    <footer>
-    <a href="{{url_for('main_bp.comments',id=seepostid)}}" class="pacifico">Comments</a>
+    <div class="comment_with_noti">
+      <a href="{{url_for('main_bp.comments',id=seepostid)}}" class="pacifico" style="font-size: 2rem;">Comments</a>
+      <span class="button__badge">{{noti_count}}</span>
+    </div>
+    
    </footer>
  </div>
 {% endblock  %}
