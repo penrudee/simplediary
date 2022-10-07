@@ -1,0 +1,64 @@
+{% extends "layouts/base.html" %}
+{% block link %}
+<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+
+{% endblock %}
+{% block title %}
+<title>
+    {{title}} -All Comment
+</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    {% if allcomment %}
+
+    <table class="table">
+        <thead class="table-primary">
+            <tr>
+                <td scope="col">#</td>
+                <td scope="col">Comments</td>
+                <td scope="col">Time</td>
+                <td scope="col">Approve?</td>
+                <td scope="col">Delete</td>
+                <td scope="col">Approve</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in allcomment %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.body|safe }}</td>
+                <td>{{ momentjs(post.timestamp).format('LLLL') }}</td>
+                <td>{{ post.approve }}</td>
+                <td>
+                    <form action="{{url_for('main_bp.delete_comment',id=post.id) }}" method="post">
+
+                        <button type="submit" class="btn btn-danger">DEL</button>
+                    </form>
+                </td>
+                <td>
+                    <!-- <a href="{{ url_for('main_bp.approve_comment',id=post.id)}}" class="btn btn-primary">
+                        Approve
+                    </a> -->
+                    <form action="{{url_for('main_bp.approve_comment',id=post.id) }}" method="post">
+
+                        <button type="submit" class="btn btn-primary">Approve</button>
+                    </form>
+
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% endif %}
+
+
+</div>
+
+{% endblock %}

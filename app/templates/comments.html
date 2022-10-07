@@ -1,0 +1,97 @@
+{% extends "layouts/base.html" %}
+{% block link %}
+<!-- <link rel="stylesheet" href="{{ url_for('static',filename='css/comments.css')}}"> -->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/commentbox.css')}}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/icon.css')}}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+{% endblock %}
+{% block title %}
+<title>
+  {{title}} -PharmBook
+</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="containers-commentbox">
+  <form action="{{ url_for('main_bp.comments',id=post.id)}}" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      <!-- <textarea class="form-control status-box" name="comment" rows="3" placeholder="Enter your comment here..."></textarea> -->
+      {{ form.body(class='form-control status-box') }}
+    </div>
+    <div class="form-group">
+      <!-- <textarea class="form-control status-box" name="comment" rows="3" placeholder="Enter your comment here..."></textarea> -->
+      {{ form.email(class='form-control ') }}
+    </div>
+    <div class="button-group pull-right">
+      <p class="counter">250</p>
+      <!-- <a href="#" class="btn btn-primary">Post</a> -->
+      {{ form.submit(class='btn btn-primary')}}
+    </div>
+  </form>
+
+  <ul class="posts">
+  </ul>
+</div>
+<div class="comments">
+  {% if comment %}
+
+  {% for c in comment %}
+  <ol class="timeline">
+  {% if c.approve == False %}
+  
+    <li class="timeline-item">
+      <span class="timeline-item-icon | faded-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path fill="currentColor"
+            d="M12.9 6.858l4.242 4.243L7.242 21H3v-4.243l9.9-9.9zm1.414-1.414l2.121-2.122a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414l-2.122 2.121-4.242-4.242z" />
+        </svg>
+      </span>
+      <div class="timeline-item-description">
+        <i class="avatar | small">
+          <img src={{c.avatar}} />
+        </i>
+        <span><a href="#">{{ c.email }}</a> ได้เพิ่มความคิดเห็น <a href="#"></a> เวลา <time
+            datetime="21-01-2021">{{momentjs(c.timestamp).format('LLLL')}}</time>&nbsp;<b>รอการอนุมัติ</b></span>
+      </div>
+    </li>
+
+    {% else %}
+
+    <li class="timeline-item | extra-space">
+
+      <span class="timeline-item-icon | filled-icon">
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path fill="currentColor"
+            d="M6.455 19L2 22.5V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6.455zM7 10v2h2v-2H7zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2z" />
+        </svg>
+      </span>
+      <div class="timeline-item-wrapper">
+        <div class="timeline-item-description">
+          <i class="avatar | small">
+            <img src={{c.avatar}} />
+          </i>
+          <span><a href="#">{{ c.email}}</a> commented on <time datetime="20-01-2021">: Time:
+            {{momentjs(c.timestamp).format('LLLL')}}</time></span>
+        </div>
+        <div class="comment">
+          <p> {{ c.body }}</p>
+        </div>
+
+      </div>
+
+    </li>
+
+  
+  {% endif %}
+</ol>
+  {% endfor %}
+  {% endif %}
+</div>
+<!-- <script src="{{ url_for('static',filename='js/commentcount.js')}}"></script> -->
+{% endblock %}

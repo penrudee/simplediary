@@ -27,3 +27,9 @@ class PostForm(FlaskForm):
    tag = StringField("Tag",render_kw={"placeholder": "Tag","tabindex":"4"})
    img_url = StringField("Image Url",render_kw={"placeholder": "Image Url","tabindex":"2"})
    submit = SubmitField("Submit",render_kw={"tabindex":"5"})
+
+class CommentForm(FlaskForm):
+   email = StringField("Head",render_kw={"placeholder": "email","tabindex":"2"})
+   body = TextAreaField("Body",render_kw={"placeholder": "Type your message here....",'tabindex': "1"})
+  
+   submit = SubmitField("Submit",render_kw={"tabindex":"2"})

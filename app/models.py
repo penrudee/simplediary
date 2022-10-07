@@ -1,5 +1,5 @@
 
-from asyncio.windows_events import NULL
+
 from app import db
 from flask_login import UserMixin
 
@@ -21,11 +21,21 @@ class Post(db.Model):
     tag = db.Column(db.String)
     timestamp = db.Column(db.DateTime,index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    img_url = db.Column(db.String)
-    
+    img_url = db.Column(db.String,default="https://i.imgur.com/DiQqxRx.png")
+    comments = db.relationship('Comment', backref='title',lazy='dynamic')
+
 class Tag(db.Model):
     id = db.Column(db.Integer,primary_key=True,index=True)
     name = db.Column(db.String(50))
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
 
 
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(250))
+    email = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime)
+    approve=db.Column(db.Boolean, default=False)
+    post_id = db.Column(db.Integer,db.ForeignKey('post.id'))
+    avatar = db.Column(db.String(100))

@@ -1,142 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ url_for('static',filename='favicon.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/nav.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    {% block link %}
 
-    {% endblock %}
-    <title>{{title}} - PharmBook</title>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{{ url_for('static',filename='favicon.ico') }}" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/nav.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <script src="{{ url_for('static',filename='js/moments.js') }}"></script>
+  <meta name="description" content="PharmBook Diary">
+  <meta name="copyright" content="Copyright (c) 2022-2025 PharmBook">
+  <meta name="author" content="PharmBook">
+  <meta name="keywords" content="flask, python, programming, Diary, Daily, Life">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PharmBook Diary">
+  <meta property="og:description"
+    content="ไดอารี่ที่พยายามจะบันทึกเรื่องราวที่อยากจดจำไว้>>ps.เวปไซต์นี้ผมเขียนขึ้นมาเองด้วย Flask framework">
+  {% block link %}
+
+  {% endblock %}
+  <title>{{title}} - PharmBook</title>
 </head>
+
 <body>
-    <div class="container">
-      
-        <!--  NAV MENU  -->
-        <nav class="nav-bar">
-          <div class="container">
-            <div class="header-logo-block"><a href=""><img class="header-logo" src="{{url_for('static',filename='logo.png')}}" alt="header-logo"></a></div>
-            <ul class="nav-ul">
-              <li class="hoverable bimini">
-                <a href="{{url_for('main_bp.index')}}" class="pacifico">Home</a>
-                <div class="mega-products shado"><div class="container">
-                  <ul>
-                    {% if current_user.is_authenticated %}
-                    <li><a href="{{url_for('main_bp.newpost')}}" class="submenu sub-ul-first">+New</a></li>
-                    
-                    <li><a href="{{url_for('main_bp.allpost')}}" class="submenu">All Post</a></li>
-                    {% endif %}
-                    <hr>
-                    <li><a href="#" class="submenu">Category</a></li>
-                    <li><a href="#" class="submenu">Category</a></li>
-                    <li><a href="#" class="submenu">Category</a></li>
-                    <li><a href="#" class="submenu sub-ul-last">Category</a></li>
-                  </ul>
-                </div></div>
-              </li>
-              <li class="hoverable ttops">
-                <a href="#" class="pacifico">Instructions</a>
-                <div class="mega-products shado"><div class="container">
-                  <ul>
-                    <li><a href="#" class="submenu sub-ul-first">Option 1</a></li>
-                    <li><a href="#" class="submenu">Option 2</a></li>
-                    <li><a href="#" class="submenu">Option 3</a></li>
-                    <li><a href="#" class="submenu sub-ul-last">Option 4</a></li>
-                  </ul>
-                </div></div>
-              </li>
-              <li class="hoverable outboards">
-                <a href="#" class="pacifico">Affiliates</a>
-                <div class="mega-products shado"><div class="container">
-                  <ul>
-                    <li><a href="#" class="submenu sub-ul-first">Entry 1</a></li>
-                    <li><a href="#" class="submenu">Entry 2</a></li>
-                    <li><a href="#" class="submenu">Entry 3</a></li>
-                    <li><a href="#" class="submenu">Entry 4</a></li>
-                    <li><a href="#" class="submenu">Entry 5</a></li>
-                    <hr>
-                    <li><a href="#" class="submenu">Super Entry 1</a></li>
-                    <li><a href="#" class="submenu">Super Entry 2</a></li>
-                    <li><a href="#" class="submenu sub-ul-last">Super Entry 3</a></li>
-                  </ul>
-                </div></div>
-              </li>
-              <li class="hoverable covers">
-                <a href="#" class="pacifico">Menu F</a>
-                <div class="mega-products shado"><div class="container">
-                  <ul>
-                    <li><a href="#" class="submenu sub-ul-first">Selection</a></li>
-                    <li><a href="#" class="submenu">Selection</a></li>
-                    <li><a href="#" class="submenu">Selection</a></li>
-                    <li><a href="#" class="submenu sub-ul-last">Selection</a></li>
-                  </ul>
-                </div></div>
-              </li>
-              <li class="hoverable seating">
-                <a href="#" class="pacifico">Another Dropdown</a>
-                <div class="mega-products shado"><div class="container">
-                  <ul>
-                    <li><a href="#" class="submenu sub-ul-first">Look at this box</a></li>
-                    <li><a href="#" class="submenu">Not me</a></li>
-                    <li><a href="#" class="submenu">What is happening</a></li>
-                    <li><a href="#" class="submenu sub-ul-last">Here we go</a></li>
-                  </ul>
-                </div></div>
-              </li>
-              <li class="hoverable fishing">
-                <a href="#" class="pacifico">Offers</a>
-                <div class="mega-products shado"><div class="container mx-auto w-full flex flex-wrap mx-2">
-                  <ul>
-                    <li><a href="#" class="submenu sub-ul-first">Crazy Promo</a></li>
-                    <li><a href="#" class="submenu">Low budget</a></li>
-                    <li><a href="#" class="submenu">High budget</a></li>
-                    <li><a href="#" class="submenu sub-ul-last">No budget</a></li>
-                  </ul>
-                </div></div>
-              </li>
-              <li class="hoverable sailing">
-                <a href="#" class="pacifico">Droppie</a>
-                <div class="mega-products shado"><div class="container">
-                  <ul>
-                    <li><a href="#" class="submenu sub-ul-first">Yolo 1</a></li>
-                    <li><a href="#" class="submenu sub-ul-last">Yolo 2</a></li>
-                  </ul>
-                </div></div>
-              </li>
-              <li class="hoverable more-menu">
-                <a href="#" class="visible-menu pacifico">More</a>
-                <a href="#" class="hidden-menu">
-                  <img class="menu-icon" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3765537/menu-icon.png" />
-                </a>
-                <div class="mega-products last-menu-item shado"><div class="container">
-                  <ul>
-                    <li><a href="#" class="submenu sub-ul-first">More items</a></li>
-                    <li><a href="#" class="submenu">More item</a></li>
-                    <li><a href="#" class="submenu">More more item</a></li>
-                    <li><a href="#" class="submenu">box</a></li>
-                    <li><a href="#" class="submenu">random item</a></li>
-                    <li><a href="#" class="submenu">planned item</a></li>
-                    <li><a href="#" class="submenu">item item</a></li>
-                    <li><a href="#" class="submenu">want more items</a></li>
-                    <li><a href="#" class="submenu sub-ul-last">The end of the more items</a></li>
-                  </ul>
-                </div></div>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div id="rl_pf">
-          {% block content %} {% endblock %}
-        </div>
+  <style>
+    .alert.success {
+      background-color: green;
+      color: white;
+    }
+
+    .alert.danger {
+      background-color: red;
+      color: white;
+    }
+  </style>
+  <div class="container">
+
+
+    <nav class="nav-bar">
+      <div class="container">
+        <div class="header-logo-block"><a href="{{ url_for('main_bp.index')}}"><img class="header-logo"
+              src="{{url_for('static',filename='logo.png')}}" alt="header-logo"></a></div>
+        <ul class="nav-ul">
+          <li class="hoverable bimini">
+            <a href="{{url_for('main_bp.index')}}" class="pacifico">Home</a>
+            <div class="mega-products shado">
+              <div class="container">
+                <ul>
+                  {% if current_user.is_authenticated %}
+                  <li><a href="{{url_for('main_bp.newpost')}}" class="submenu sub-ul-first">+New</a></li>
+
+                  <li><a href="{{url_for('main_bp.allpost')}}" class="submenu">All Post</a></li>
+                  <li><a href="{{url_for('main_bp.allcomment')}}" class="submenu">All Comment</a></li>
+                  {% endif %}
+                  <hr>
+                  <li><a href="#" class="submenu">Category</a></li>
+                  <li><a href="#" class="submenu">Category</a></li>
+                  <li><a href="#" class="submenu">Category</a></li>
+                  <li><a href="#" class="submenu sub-ul-last">Category</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="hoverable ttops">
+            <a href="#" class="pacifico">Instructions</a>
+            <div class="mega-products shado">
+              <div class="container">
+                <ul>
+                  <li><a href="#" class="submenu sub-ul-first">Option 1</a></li>
+                  <li><a href="#" class="submenu">Option 2</a></li>
+                  <li><a href="#" class="submenu">Option 3</a></li>
+                  <li><a href="#" class="submenu sub-ul-last">Option 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="hoverable outboards">
+            <a href="#" class="pacifico">Affiliates</a>
+            <div class="mega-products shado">
+              <div class="container">
+                <ul>
+                  <li><a href="#" class="submenu sub-ul-first">Entry 1</a></li>
+                  <li><a href="#" class="submenu">Entry 2</a></li>
+                  <li><a href="#" class="submenu">Entry 3</a></li>
+                  <li><a href="#" class="submenu">Entry 4</a></li>
+                  <li><a href="#" class="submenu">Entry 5</a></li>
+                  <hr>
+                  <li><a href="#" class="submenu">Super Entry 1</a></li>
+                  <li><a href="#" class="submenu">Super Entry 2</a></li>
+                  <li><a href="#" class="submenu sub-ul-last">Super Entry 3</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="hoverable covers">
+            <a href="#" class="pacifico">Menu F</a>
+            <div class="mega-products shado">
+              <div class="container">
+                <ul>
+                  <li><a href="#" class="submenu sub-ul-first">Selection</a></li>
+                  <li><a href="#" class="submenu">Selection</a></li>
+                  <li><a href="#" class="submenu">Selection</a></li>
+                  <li><a href="#" class="submenu sub-ul-last">Selection</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="hoverable seating">
+            <a href="#" class="pacifico">Another Dropdown</a>
+            <div class="mega-products shado">
+              <div class="container">
+                <ul>
+                  <li><a href="#" class="submenu sub-ul-first">Look at this box</a></li>
+                  <li><a href="#" class="submenu">Not me</a></li>
+                  <li><a href="#" class="submenu">What is happening</a></li>
+                  <li><a href="#" class="submenu sub-ul-last">Here we go</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="hoverable fishing">
+            <a href="#" class="pacifico">Offers</a>
+            <div class="mega-products shado">
+              <div class="container mx-auto w-full flex flex-wrap mx-2">
+                <ul>
+                  <li><a href="#" class="submenu sub-ul-first">Crazy Promo</a></li>
+                  <li><a href="#" class="submenu">Low budget</a></li>
+                  <li><a href="#" class="submenu">High budget</a></li>
+                  <li><a href="#" class="submenu sub-ul-last">No budget</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="hoverable sailing">
+            <a href="#" class="pacifico">Droppie</a>
+            <div class="mega-products shado">
+              <div class="container">
+                <ul>
+                  <li><a href="#" class="submenu sub-ul-first">Yolo 1</a></li>
+                  <li><a href="#" class="submenu sub-ul-last">Yolo 2</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="hoverable more-menu">
+            <a href="#" class="visible-menu pacifico">More</a>
+            <a href="#" class="hidden-menu">
+              <img class="menu-icon" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3765537/menu-icon.png" />
+            </a>
+            <div class="mega-products last-menu-item shado">
+              <div class="container">
+                <ul>
+                  <li><a href="#" class="submenu sub-ul-first">More items</a></li>
+                  <li><a href="#" class="submenu">More item</a></li>
+                  <li><a href="#" class="submenu">More more item</a></li>
+                  <li><a href="#" class="submenu">box</a></li>
+                  <li><a href="#" class="submenu">random item</a></li>
+                  <li><a href="#" class="submenu">planned item</a></li>
+                  <li><a href="#" class="submenu">item item</a></li>
+                  <li><a href="#" class="submenu">want more items</a></li>
+                  <li><a href="#" class="submenu sub-ul-last">The end of the more items</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div id="">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert {{ category }}"> {{ message|capitalize }} </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      {% block content %} {% endblock %}
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
