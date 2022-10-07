@@ -39,3 +39,4 @@ class Comment(db.Model):
     approve=db.Column(db.Boolean, default=False)
     post_id = db.Column(db.Integer,db.ForeignKey('post.id'))
     avatar = db.Column(db.String(100))
+    editor = db.Column(db.Integer)
