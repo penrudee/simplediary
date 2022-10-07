@@ -4,6 +4,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200&display=swap" rel="stylesheet">
+
+    <script src="{{ url_for('static',filename='js/seepost.js')}}"></script>
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:url" content="{{url_for('main_bp.seepost',id=seepostid)}}">
+    <meta property="og:image" content="{{seepost_img_url}}">
     {% endblock %}
 {% block title %} 
   <title>
@@ -13,15 +18,29 @@
   
 {% block content %}
 
-<div class="container">  
- {% if post %}   
-    <p class="text h1">{{post.head}}</p>
-    <p class="text">{{post.timestamp.strftime("%d-%M-%Y")}}</p>
-    <p class="text body">{{post.body|safe}} </p>
-  
- {% endif %}
-</div>
-
+<div class="container">
+   <article class="main">
+     <aside class="post-meta">
+       <div class="div-avatar" id="a-avartar">
+         <img src="{{url_for('static',filename='user_image/user1.jpg')}}" class="user__img" >
+       </div>
+       <div class="post-info">
+         <p><a href="#" class="author-name">PharmBook</a></p>
+         {% if post %}  
+         <!-- <p class="text-muted">Created on <strong>{{post.timestamp.strftime("%d-%m-%Y")}}</strong>.</p> -->
+         <p>{{momentjs(post.timestamp).format('LLLL')}}</p>
+       </div>
+     </aside>
+     <div class="margin-up-top">
+         <h1>{{post.head|emojify|safe}}</h1>
+         <div>{{post.body|safe}}</div>
+     </div>
+     {% endif %}
+   </article>
+   <footer>
+    <a href="{{url_for('main_bp.comments',id=seepostid)}}" class="pacifico">Comments</a>
+   </footer>
+ </div>
 {% endblock  %}
 
 

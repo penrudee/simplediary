@@ -14,29 +14,42 @@
 <div class="container">
     
   {% if posts  %}
-    {% for post in posts %}
+    
     <table class="table">
         <thead class="table-primary">
             <tr>
                 <td scope="col">#</td>
                 <td scope="col">หัวข้อ</td>
+                <td scopre="col">Time</td>
                 <td scope="col">Delete</td>
+                <td scope="col">Edit</td>
             </tr>
         </thead>
         <tbody>
+          {% for post in posts %}
             <tr>
                 <td>{{post.id}}</td>
-                <td>{{post.head}}</td>
+                <td>{{post.head|emojify|safe}}</td>
+                <td>{{momentjs(post.timestamp).format('LLLL')}}</td>
                 <td>
                     <form action="{{url_for('main_bp.del_post',id=post.id) }}" method="post">
                         
                         <button type="submit" class="btn btn-danger">DEL</button>
                     </form>
                 </td>
+                <td>
+                  <a href="{{ url_for('main_bp.edit',id=post.id)}}" class="btn btn-primary">
+                    Edit
+                  </a>
+                        
+                    
+                
+                </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
-    {% endfor %}
+    
   
   {% endif %}
 

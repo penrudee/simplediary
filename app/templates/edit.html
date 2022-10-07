@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/post.css')}}">
     
     <script src="{{ url_for('static',filename='js/texteditor.js') }}"></script>
-    
+
     {% endblock %}
 {% block title %} 
   <title>
@@ -14,11 +14,11 @@
 {% block content %}
 
 <div class="container">  
-    <form action="{{url_for('main_bp.post_post') }}" id="contact" action="" method="post">
-      <h3>บันทึก</h3>
+    <form action="{{url_for('main_bp.edit_post',id=post.id) }}" id="contact" action="" method="post">
+      <h3>แก้ไขบันทึก</h3>
       <h4>Contact us for custom quote</h4>
       <fieldset>
-        {{ form.head(class="form-control")}}
+        {{ form.head(class="form-control")|emojify|safe}}
       </fieldset>
       
       <fieldset>
@@ -26,7 +26,7 @@
       </fieldset>
       
       <fieldset>
-        {{form.body(class="form-control")}}
+        {{form.body(class="form-control")|emojify|safe}}
       </fieldset>
       <fieldset>
         {{form.tag(class="form-control")}}
@@ -40,6 +40,3 @@
 
 
 {% endblock  %}
-
-
-

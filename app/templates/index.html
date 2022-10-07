@@ -4,6 +4,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200&display=swap" rel="stylesheet">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:url" content="{{url_for('main_bp.index')}}">
+    <meta property="og:image" content="https://i.imgur.com/9BHlnlV.png">
   {% endblock %}
 {% block title %} 
   <title>
@@ -22,9 +25,10 @@
         <img src="{{ post.img_url }}" alt="card__image" class="card__image" width="600">
       </div>
       <div class="card__body">
-        <span class="tag tag-blue">{{post.tag}}</span>
-        <h4><a href="{{url_for('main_bp.seepost',id=post.id) }}">{{post.head}}</a></h4>
-        <p>{{post.body|truncate(120,true,'') }}</p>
+        
+        <span class="tag tag-blue"><a href="{{ url_for('main_bp.tagpost',tag=post.tag)}}">{{post.tag}}</a></span>
+        <h4><a href="{{ url_for('main_bp.seepost',id=post.id) }}">{{post.head|emojify|safe}}</a></h4>
+        <p>{{post.body|emojify|safe|truncate(120,False,'...') }}</p>
       </div>
       <div class="card__footer">
         <div class="user">
@@ -33,51 +37,18 @@
           </div>
           <div class="user__info">
             <h5>PharmBook</h5>
-            <small>{{post.timestamp.strftime("%d-%M-%Y")}}</small>
+            <small>{{momentjs(post.timestamp).format('LLLL')}}</small>
           </div>
         </div>
       </div>
     </div>
-    <!-- Page Links-->
-    <div class="text-right">
-                    
-      <a href="{{ url_for('main_bp.index', page=pge.prev_num) }}" class="btn btn-outline-dark 
-           {% if pge.page == 1 %} disabled {% endif %}">
-          &laquo;
-      </a>
-      <!-- Loop through the number of pages to display a link for each-->
-      {% for page_num in pge.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-          {% if page_num %}
-          <!-- Check for the active page and set the link to "Active"-->
-              {% if pge.page == page_num %}
-                  <a href="{{ url_for('main_bp.index', page=page_num) }}" class="btn btn-primary">
-                      {{ page_num }}
-                  </a>
-                  {% else %}
-                  <a href="{{ url_for('main_bp.index', page=page_num) }}" class="btn btn-outline-dark">
-                      {{ page_num }}
-                  </a>
-              {% endif %}
-          {% else %}
-          ...
-          {% endif %}
-      {% endfor %}
-      <a href="{{ url_for('main_bp.index', page=pge.next_num) }}" class="btn btn-outline-dark 
-           {% if pge.page == pge.pages %} disabled {% endif %}">
-          &raquo;
-      </a>
-      
-  </div>
-  <p class="text-right mt-3">
-      Showing page {{ pge.page }} of {{ pge.pages }}
-  </p>
-</div>
+    
+
     {% endfor %}
   
   {% endif %}
-
-
 </div>
+{% include 'layouts/__page.html' %}
 
 {% endblock  %}
 
