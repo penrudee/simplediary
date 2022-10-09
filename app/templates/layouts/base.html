@@ -27,10 +27,22 @@
   {% endblock %}
   <title>{{title}} - PharmBook</title>
 </head>
-
+<style>
+  .push{
+    height: 50px;
+  }
+  .floating-menu{
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    background-color: inherit;
+    bottom: 0px;
+    right: 0px;
+  }
+</style>
 <body>
   <style>
-    .alert.success {
+     .alert.success {
       background-color: green;
       color: white;
     }
@@ -40,7 +52,7 @@
       color: white;
     }
   </style>
-  <div class="container">
+  <!-- <div class="container"> -->
 
 
     <nav class="nav-bar">
@@ -183,7 +195,7 @@
       {% endwith %}
       {% block content %} {% endblock %}
     </div>
-  </div>
+  <!-- </div> -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

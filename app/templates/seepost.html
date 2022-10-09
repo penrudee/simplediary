@@ -1,51 +1,52 @@
 {% extends "layouts/base.html" %}
-    {% block link %}
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/seepost.css')}}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200&display=swap" rel="stylesheet">
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/seepost.css')}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200&display=swap" rel="stylesheet">
 
-    <script src="{{ url_for('static',filename='js/seepost.js')}}"></script>
-    <meta property="og:title" content="{{title}}">
-    <meta property="og:url" content="{{url_for('main_bp.seepost',id=seepostid)}}">
-    <meta property="og:image" content="{{seepost_img_url}}">
-    {% endblock %}
-{% block title %} 
-  <title>
-     {{title}} -PharmBook
-  </title>
-{% endblock %} 
-  
+<script src="{{ url_for('static',filename='js/seepost.js')}}"></script>
+<meta property="og:title" content="{{title}}">
+<meta property="og:url" content="{{url_for('main_bp.seepost',id=seepostid)}}">
+<meta property="og:image" content="{{seepost_img_url}}">
+{% endblock %}
+{% block title %}
+<title>
+  {{title}} -PharmBook
+</title>
+{% endblock %}
+
 {% block content %}
-
 <div class="container">
-   <article class="main">
-     <aside class="post-meta">
-       <div class="div-avatar" id="a-avartar">
-         <img src="{{url_for('static',filename='user_image/user1.jpg')}}" class="user__img" >
-       </div>
-       <div class="post-info">
-         <p><a href="#" class="author-name">PharmBook</a></p>
-         {% if post %}  
-         <!-- <p class="text-muted">Created on <strong>{{post.timestamp.strftime("%d-%m-%Y")}}</strong>.</p> -->
-         <p>{{momentjs(post.timestamp).format('LLLL')}}</p>
-       </div>
-     </aside>
-     <div class="margin-up-top">
-         <h1>{{post.head|emojify|safe}}</h1>
-         <div>{{post.body|safe}}</div>
-     </div>
-     {% endif %}
-   </article>
-   <footer>
-    <div class="comment_with_noti">
-      <a href="{{url_for('main_bp.comments',id=seepostid)}}" class="pacifico" style="font-size: 2rem;">Comments</a>
-      <span class="button__badge">{{noti_count}}</span>
-    </div>
-    
-   </footer>
- </div>
-{% endblock  %}
+  <div class="wrapper">
+    <article class="main">
+      <aside class="post-meta">
+        <div class="div-avatar" id="a-avartar">
+          <img src="{{url_for('static',filename='user_image/user1.jpg')}}" class="user__img">
+        </div>
+        <div class="post-info">
+          <p><a href="#" class="author-name">PharmBook</a></p>
+          {% if post %}
+          <!-- <p class="text-muted">Created on <strong>{{post.timestamp.strftime("%d-%m-%Y")}}</strong>.</p> -->
+          <p>{{momentjs(post.timestamp).format('LLLL')}}</p>
+        </div>
+      </aside>
+      <div class="margin-up-top">
+        <h1>{{post.head|emojify|safe}}</h1>
+        <div>{{post.body|safe}}</div>
+      </div>
+      {% endif %}
+    </article>
+  </div>
+</div>
+<div class="push"></div>
+<div class="floating-menu">
+  <div class="comment_with_noti">
+    <a href="{{url_for('main_bp.comments',id=seepostid)}}" class="pacifico" style="font-size: 2rem;">Comments</a>
+    <span class="button__badge">{{noti_count}}</span>
+  </div>
+
+</div>
 
 
-
+{% endblock %}
